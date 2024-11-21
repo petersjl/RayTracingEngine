@@ -5,7 +5,7 @@ namespace RayTracingTests;
 public class TupleTests
 {
     private const double epsilon = 1e-5;
-    
+
     [SetUp]
     public void Setup()
     {
@@ -77,7 +77,7 @@ public class TupleTests
         Assert.That(t3.IsPoint, Is.False);
         Assert.That(t3.IsVector, Is.True);
     }
-    
+
     [Test]
     public void TestPointSubtraction()
     {
@@ -92,7 +92,7 @@ public class TupleTests
         Assert.That(t3.IsPoint, Is.False);
         Assert.That(t3.IsVector, Is.True);
     }
-    
+
     [Test]
     public void TestTupleNegation()
     {
@@ -106,7 +106,7 @@ public class TupleTests
         Assert.That(t2.IsPoint, Is.False);
         Assert.That(t2.IsVector, Is.False);
     }
-    
+
     [Test]
     public void TestScalarMultiplication()
     {
@@ -118,7 +118,7 @@ public class TupleTests
         Assert.That(t2.Z, Is.EqualTo(10.85).Within(epsilon));
         Assert.That(t2.W, Is.EqualTo(3.5).Within(epsilon));
     }
-    
+
     [Test]
     public void TestFractionalMultiplication()
     {
@@ -130,13 +130,13 @@ public class TupleTests
         Assert.That(t2.Z, Is.EqualTo(1.55).Within(epsilon));
         Assert.That(t2.W, Is.EqualTo(0.5).Within(epsilon));
     }
-    
+
     [Test]
-    [TestCase(1,0,0,0,1)]
-    [TestCase(0,1,0,0,1)]
-    [TestCase(0,0,1,0,1)]
-    [TestCase(1,2,3,0, 3.741657)] //sqrt(14)
-    [TestCase(-1,-2,-3,0,3.741657)]
+    [TestCase(1, 0, 0, 0, 1)]
+    [TestCase(0, 1, 0, 0, 1)]
+    [TestCase(0, 0, 1, 0, 1)]
+    [TestCase(1, 2, 3, 0, 3.741657)] //sqrt(14)
+    [TestCase(-1, -2, -3, 0, 3.741657)]
     public void TestVectorMagnitude(double x, double y, double z, double w, double magnitude)
     {
         var t1 = new RayVector(x, y, z);
@@ -146,13 +146,13 @@ public class TupleTests
     }
 
     [Test]
-    [TestCase(4,0,0,1,0,0)]
-    [TestCase(1,2,3,0.26726,0.53452,0.80178)]
+    [TestCase(4, 0, 0, 1, 0, 0)]
+    [TestCase(1, 2, 3, 0.26726, 0.53452, 0.80178)]
     public void TestVectorNormalization(double x1, double y1, double z1, double x2, double y2, double z2)
     {
         var t1 = new RayVector(x1, y1, z1);
         var t2 = t1.Normalize();
-        
+
         Assert.That(t2.X, Is.EqualTo(x2).Within(epsilon));
         Assert.That(t2.Y, Is.EqualTo(y2).Within(epsilon));
         Assert.That(t2.Z, Is.EqualTo(z2).Within(epsilon));
@@ -162,25 +162,25 @@ public class TupleTests
     [Test]
     public void TestVectorDotProduct()
     {
-        var t1 = new RayVector(1,2,3);
-        var t2 = new RayVector(2,3,4);
+        var t1 = new RayVector(1, 2, 3);
+        var t2 = new RayVector(2, 3, 4);
 
-        double dotProduct = t1.DotProduct(t2);
+        var dotProduct = t1.DotProduct(t2);
 
         Assert.That(dotProduct, Is.EqualTo(20));
     }
-    
+
     [Test]
     public void TestVectorCrossProduct()
     {
-        var a = new RayVector(1,2,3);
-        var b = new RayVector(2,3,4);
+        var a = new RayVector(1, 2, 3);
+        var b = new RayVector(2, 3, 4);
 
-        RayVector crossProductAB = a.CrossProduct(b);
-        RayVector crossProductBA = b.CrossProduct(a);
+        var crossProductAB = a.CrossProduct(b);
+        var crossProductBA = b.CrossProduct(a);
 
-        RayVector expectedAB = new RayVector(-1,2,-1);
-        RayVector expectedBA = new RayVector(1,-2,1);
+        var expectedAB = new RayVector(-1, 2, -1);
+        var expectedBA = new RayVector(1, -2, 1);
         Assert.That(crossProductAB, Is.EqualTo(expectedAB));
         Assert.That(crossProductBA, Is.EqualTo(expectedBA));
     }
