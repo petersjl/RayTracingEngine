@@ -5,6 +5,8 @@ namespace RayTracingTests;
 [TestFixture]
 public class ColorTest
 {
+    private const double epsilon = 1e-5;
+
     [Test]
     public void ShouldBeCreatedWithConstructor()
     {
@@ -24,5 +26,17 @@ public class ColorTest
         Assert.That(c3.Red, Is.EqualTo(1.6));
         Assert.That(c3.Green, Is.EqualTo(0.7));
         Assert.That(c3.Blue, Is.EqualTo(1.0));
+    }
+
+    [Test]
+    public void ShouldMultiplyColors()
+    {
+        var c1 = new RayColor(1, 0.2, 0.4);
+        var c2 = new RayColor(0.9, 1, 0.1);
+        var c3 = c1 * c2;
+
+        Assert.That(c3.Red, Is.EqualTo(0.9).Within(epsilon));
+        Assert.That(c3.Green, Is.EqualTo(0.2).Within(epsilon));
+        Assert.That(c3.Blue, Is.EqualTo(0.04).Within(epsilon));
     }
 }

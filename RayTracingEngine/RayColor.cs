@@ -20,4 +20,13 @@ public class RayColor : RayTuple
     {
         return new RayColor((RayTuple)left + right);
     }
+
+    public static RayColor operator *(RayColor left, RayColor right)
+    {
+        return new RayColor(
+            left.Red * right.Red,
+            left.Green * right.Green,
+            left.Blue * right.Blue
+        );
+    }
 }
