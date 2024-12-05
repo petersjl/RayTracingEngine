@@ -32,6 +32,6 @@ public class CanvasTest
 
         canvas.Write(2, 3, red);
 
-        Assert.That(canvas[2][3], Is.EqualTo(red));
+        Assert.That(canvas[2, 3], Is.EqualTo(red));
     }
 }
