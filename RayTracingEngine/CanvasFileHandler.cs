@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using RayColors;
 
-namespace RayTracingEngine;
+namespace Drawspace;
 
 public static class CanvasFileHandler
 {
@@ -28,5 +28,12 @@ public static class CanvasFileHandler
         var green = Convert.ToUInt16(Math.Clamp(color.Green, 0, 1) * 255);
         var blue = Convert.ToUInt16(Math.Clamp(color.Blue, 0, 1) * 255);
         return $"{red} {green} {blue}";
+    }
+
+    public static void WriteToFile(Canvas canvas, string filename)
+    {
+        var contents = toPPM(canvas);
+        using var file = new StreamWriter(filename);
+        file.Write(contents);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using RayColors;
 
-namespace RayTracingEngine;
+namespace Drawspace;
 
 public class Canvas
 {
