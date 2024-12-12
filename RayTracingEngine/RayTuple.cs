@@ -64,6 +64,16 @@ public class RayTuple(double x, double y, double z, double w)
     {
         return DotProduct(this, a);
     }
+
+    public RayPoint toPoint()
+    {
+        return new RayPoint(X, Y, Z);
+    }
+
+    public RayVector toVector()
+    {
+        return new RayVector(X, Y, Z);
+    }
 }
 
 public class RayVector(double x, double y, double z) : RayTuple(x, y, z, 0.0)
